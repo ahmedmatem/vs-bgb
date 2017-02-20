@@ -8,6 +8,7 @@
 
         public int AccommodationAdId { get; set; }
 
+        // Navigation properties
         public virtual AccommodationAd AccommodationAd { get; set; }
     }
 }
