@@ -43,7 +43,7 @@
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Request.CreateResponse(HttpStatusCode.OK, new { accommodations = result });
         }
 
         // POST api/accommodations/save
