@@ -35,7 +35,7 @@
         public HttpResponseMessage GetAll()
         {
             var result = context.AccommodationAds
-                .OrderBy(x => x.PublishedDate)
+                .OrderByDescending(x => x.PublishedDate)
                 .Select(a => a)
                 .ToList<AccommodationAd>();
 
