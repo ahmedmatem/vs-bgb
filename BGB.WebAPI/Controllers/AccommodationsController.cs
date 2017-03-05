@@ -34,17 +34,47 @@
         [Route("All")]
         public HttpResponseMessage GetAll()
         {
-            var result = context.AccommodationAds
+            var accAds = context.AccommodationAds
                 .OrderByDescending(x => x.PublishedDate)
                 .Select(a => a)
                 .ToList<AccommodationAd>();
 
-            if (result == null)
+            ICollection<AccViewModel> resultAsAccViewModel = new List<AccViewModel>();
+            foreach (AccommodationAd accAd in accAds)
+            {
+                resultAsAccViewModel.Add(new AccViewModel()
+                {
+                    Id = accAd.Id,
+                    Author = accAd.Author,
+                    Title = accAd.Title,
+                    Content = accAd.Content,
+                    BlobNames = ExtractBlobNamesFromPictures(accAd.Pictures)
+                });
+            }
+
+            if (accAds == null)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, new { accommodations = result });
+            return Request.CreateResponse(HttpStatusCode.OK, new { accommodations = resultAsAccViewModel });
+        }
+
+        private ICollection<string> ExtractBlobNamesFromPictures(ICollection<Picture> pictures)
+        {
+            if(pictures == null)
+            {
+                return null;
+            }
+
+            ICollection<string> blobNames = new List<string>();
+
+            foreach (Picture picture in pictures)
+            {
+                blobNames.Add(picture.Name);
+            }
+
+            return blobNames;
         }
 
         // POST api/accommodations/save
