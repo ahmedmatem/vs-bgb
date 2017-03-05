@@ -56,12 +56,19 @@
                 return BadRequest(ModelState);
             }
 
+            ICollection<Picture> pictures = new List<Picture>();
+            foreach (string blobName in model.BlobNames)
+            {
+                pictures.Add(new Picture() { Name = blobName });
+            }
+
             var accomodationAd = new AccommodationAd()
             {
                 Title = model.Title,
                 Author = model.Author,
                 Content = model.Content,
-                PublishedDate = DateTime.Now
+                PublishedDate = DateTime.Now,
+                Pictures = pictures,
             };
 
             context.AccommodationAds.Add(accomodationAd);
