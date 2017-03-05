@@ -86,21 +86,23 @@
             {
                 return BadRequest(ModelState);
             }
-
-            ICollection<Picture> pictures = new List<Picture>();
-            foreach (string blobName in model.BlobNames)
-            {
-                pictures.Add(new Picture() { Name = blobName });
-            }
-
+            
             var accomodationAd = new AccommodationAd()
             {
                 Title = model.Title,
                 Author = model.Author,
                 Content = model.Content,
                 PublishedDate = DateTime.Now,
-                Pictures = pictures,
             };
+            if (model.BlobNames != null)
+            {
+                ICollection<Picture> pictures = new List<Picture>();
+                foreach (string blobName in model.BlobNames)
+                {
+                    pictures.Add(new Picture() { Name = blobName });
+                }
+                accomodationAd.Pictures = pictures;
+            }
 
             context.AccommodationAds.Add(accomodationAd);
             context.SaveChanges();            
