@@ -49,7 +49,7 @@
                     Title = accAd.Title,
                     Content = accAd.Content,
                     PublishedDate = accAd.PublishedDate,
-                    Blobs = accAd.Pictures
+                    Pictures = accAd.Pictures
                 });
             }
 
