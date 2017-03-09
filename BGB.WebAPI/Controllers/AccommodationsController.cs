@@ -72,7 +72,7 @@
 
             foreach (Picture picture in pictures)
             {
-                blobNames.Add(picture.Name);
+                blobNames.Add("BlobName = " + picture.Name);
             }
 
             return blobNames;
