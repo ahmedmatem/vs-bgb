@@ -49,7 +49,8 @@
                     Title = accAd.Title,
                     Content = accAd.Content,
                     PublishedDate = accAd.PublishedDate,
-                    Pictures = accAd.Pictures
+                    Pictures = accAd.Pictures,
+                    BlobNames = null
                 });
             }
 
