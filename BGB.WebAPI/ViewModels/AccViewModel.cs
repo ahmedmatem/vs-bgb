@@ -9,6 +9,6 @@
 
     public class AccViewModel : AdViewModel
     {
-        public ICollection<Picture> BlobNames { get; set; }
+        public ICollection<Picture> Pictures { get; set; }
     }
 }
