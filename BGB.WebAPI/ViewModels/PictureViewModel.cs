@@ -1,6 +1,6 @@
 ﻿namespace BGB.WebAPI.ViewModels
 {
-    public class PictureViewModel1
+    public class PictureViewModel
     {
         public int Id { get; set; }
 
