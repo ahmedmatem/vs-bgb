@@ -10,6 +10,5 @@
     public class AccViewModel : AdViewModel
     {
         public ICollection<string> BlobNames { get; set; }
-        public ICollection<Picture> Pictures { get; set; }
     }
 }
