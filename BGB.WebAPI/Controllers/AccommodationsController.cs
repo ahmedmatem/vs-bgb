@@ -49,7 +49,7 @@
                     Title = accAd.Title,
                     Content = accAd.Content,
                     PublishedDate = accAd.PublishedDate,
-                    BlobNames = ExtractBlobNamesFromPictures(accAd.Pictures)
+                    BlobNames = accAd.Pictures
                 });
             }
 
@@ -59,23 +59,6 @@
             }
 
             return Request.CreateResponse(HttpStatusCode.OK, new { accommodations = resultAsAccViewModel });
-        }
-
-        private ICollection<string> ExtractBlobNamesFromPictures(ICollection<Picture> pictures)
-        {
-            if(pictures == null)
-            {
-                return null;
-            }
-
-            ICollection<string> blobNames = new List<string>();
-
-            foreach (Picture picture in pictures)
-            {
-                blobNames.Add(picture.Name);
-            }
-
-            return blobNames;
         }
 
         // POST api/accommodations/save

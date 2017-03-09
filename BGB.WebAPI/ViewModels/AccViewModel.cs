@@ -5,8 +5,10 @@
     using System.Linq;
     using System.Web;
 
+    using Models;
+
     public class AccViewModel : AdViewModel
     {
-        public ICollection<string> BlobNames { get; set; }
+        public ICollection<Picture> BlobNames { get; set; }
     }
 }
