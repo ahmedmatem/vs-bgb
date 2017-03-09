@@ -34,32 +34,25 @@
         [Route("All")]
         public HttpResponseMessage GetAll()
         {
-            var accAds = context.AccommodationAds
+            var result = context.AccommodationAds
                 .OrderByDescending(x => x.PublishedDate)
-                .Select(a => a)
-                .ToList<AccommodationAd>();
-
-            ICollection<AccViewModel> resultAsAccViewModel = new List<AccViewModel>();
-            foreach (AccommodationAd accAd in accAds)
-            {
-                resultAsAccViewModel.Add(new AccViewModel()
+                .Select(a => new AccViewModel()
                 {
-                    Id = accAd.Id,
-                    Author = accAd.Author,
-                    Title = accAd.Title,
-                    Content = accAd.Content,
-                    PublishedDate = accAd.PublishedDate,
-                    Pictures = accAd.Pictures,
-                    BlobNames = null
-                });
-            }
+                    Id = a.Id,
+                    Author = a.Author,
+                    Title = a.Title,
+                    Content = a.Content,
+                    PublishedDate = a.PublishedDate,
+                    Pictures = a.Pictures
+                })
+                .ToList<AccViewModel>();
 
-            if (accAds == null)
+            if (result == null)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, new { accommodations = resultAsAccViewModel });
+            return Request.CreateResponse(HttpStatusCode.OK, new { accommodations = result });
         }
 
         // POST api/accommodations/save
