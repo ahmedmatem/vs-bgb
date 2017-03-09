@@ -296,7 +296,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AccViewModel.cs" />
     <Compile Include="ViewModels\AdViewModel.cs" />
-    <Compile Include="ViewModels\PictureViewModel.cs" />
+    <Compile Include="ViewModels\PictureViewModel1.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
