@@ -49,7 +49,7 @@
                     Title = accAd.Title,
                     Content = accAd.Content,
                     PublishedDate = accAd.PublishedDate,
-                    BlobNames = ExtractBlobNamesFromPictures(accAd.Pictures)
+                    BlobName = ExtractBlobNamesFromPictures(accAd.Pictures)
                 });
             }
 
@@ -61,18 +61,18 @@
             return Request.CreateResponse(HttpStatusCode.OK, new { accommodations = resultAsAccViewModel });
         }
 
-        private ICollection<string> ExtractBlobNamesFromPictures(ICollection<Picture> pictures)
+        private ICollection<PictureViewModel> ExtractBlobNamesFromPictures(ICollection<Picture> pictures)
         {
             if(pictures == null)
             {
                 return null;
             }
 
-            ICollection<string> blobNames = new List<string>();
+            ICollection<PictureViewModel> blobNames = new List<PictureViewModel>();
 
             foreach (Picture picture in pictures)
             {
-                blobNames.Add("BlobName = " + picture.Name);
+                blobNames.Add(new PictureViewModel(){ BlobName = picture.Name});
             }
 
             return blobNames;
