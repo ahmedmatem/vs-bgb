@@ -9,7 +9,7 @@
 
     public class AccViewModel : AdViewModel
     {
-        public ICollection<PictureViewModel1> BlobName { get; set; }
+        public ICollection<PictureViewModel> BlobName { get; set; }
 
         public ICollection<string> BlobNames { get; set; }
     }

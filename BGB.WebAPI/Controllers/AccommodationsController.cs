@@ -61,18 +61,18 @@
             return Request.CreateResponse(HttpStatusCode.OK, new { accommodations = resultAsAccViewModel });
         }
 
-        private ICollection<PictureViewModel1> ExtractBlobNamesFromPictures(ICollection<Picture> pictures)
+        private ICollection<PictureViewModel> ExtractBlobNamesFromPictures(ICollection<Picture> pictures)
         {
             if(pictures == null)
             {
                 return null;
             }
 
-            ICollection<PictureViewModel1> blobNames = new List<PictureViewModel1>();
+            ICollection<PictureViewModel> blobNames = new List<PictureViewModel>();
 
             foreach (Picture picture in pictures)
             {
-                blobNames.Add(new PictureViewModel1(){ BlobName = picture.Name});
+                blobNames.Add(new PictureViewModel(){ BlobName = picture.Name});
             }
 
             return blobNames;
