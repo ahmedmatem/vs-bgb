@@ -22,12 +22,22 @@
         {
             AccommodationAd result = context.AccommodationAds.Find(id);
 
-            if(result == null)
+            AccViewModel resultWithImages = new AccViewModel()
+            {
+                Id = result.Id,
+                Author = result.Author,
+                Title = result.Title,
+                Content = result.Content,
+                PublishedDate = result.PublishedDate,
+                Blobs = ExtractBlobNamesFromPictures(result.Pictures)
+            };
+
+            if(resultWithImages == null)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Request.CreateResponse(HttpStatusCode.OK, resultWithImages);
         }
 
         // GET api/accommodations/all
