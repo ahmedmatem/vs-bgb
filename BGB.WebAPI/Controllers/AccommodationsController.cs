@@ -49,7 +49,7 @@
                     Title = accAd.Title,
                     Content = accAd.Content,
                     PublishedDate = accAd.PublishedDate,
-                    BlobName = ExtractBlobNamesFromPictures(accAd.Pictures)
+                    Blobs = ExtractBlobNamesFromPictures(accAd.Pictures)
                 });
             }
 
