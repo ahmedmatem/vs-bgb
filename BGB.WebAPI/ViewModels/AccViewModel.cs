@@ -9,8 +9,10 @@
 
     public class AccViewModel : AdViewModel
     {
+        // use this property for downloading images
         public ICollection<PictureViewModel> Blobs { get; set; }
 
+        // use this property for upload images
         public ICollection<string> BlobNames { get; set; }
     }
 }

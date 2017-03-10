@@ -72,7 +72,11 @@
 
             foreach (Picture picture in pictures)
             {
-                blobNames.Add(new PictureViewModel(){ BlobName = picture.Name});
+                blobNames.Add(new PictureViewModel(){
+                    Id = picture.Id,
+                    BlobName = picture.Name,
+                    AccommodationId = picture.AccommodationAdId
+                });
             }
 
             return blobNames;
