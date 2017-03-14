@@ -117,6 +117,15 @@
                 }
                 accomodationAd.Pictures = pictures;
             }
+            if (model.ThumbnailBlobNames != null)
+            {
+                ICollection<Picture> pictures = new List<Picture>();
+                foreach (string thumbnailBlobName in model.ThumbnailBlobNames)
+                {
+                    pictures.Add(new Picture() { Name = thumbnailBlobName });
+                }
+                accomodationAd.Pictures = pictures;
+            }
 
             context.AccommodationAds.Add(accomodationAd);
             context.SaveChanges();            

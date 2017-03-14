@@ -14,5 +14,7 @@
 
         // use this property for upload images
         public ICollection<string> BlobNames { get; set; }
+
+        public ICollection<string> ThumbnailBlobNames { get; set; }
     }
 }
