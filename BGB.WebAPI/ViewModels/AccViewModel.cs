@@ -11,6 +11,8 @@
     {
         // use this property for downloading images
         public ICollection<PictureViewModel> Blobs { get; set; }
+        public ICollection<PictureViewModel> ThumbnailBlobs { get; set; }
+
 
         // use this property for upload images
         public ICollection<string> BlobNames { get; set; }

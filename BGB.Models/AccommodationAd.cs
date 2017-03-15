@@ -1,5 +1,6 @@
 ﻿namespace BGB.Models
 {
+    using System;
     using System.Collections.Generic;
 
 
@@ -7,11 +8,14 @@
     {
         public AccommodationAd()
         {
-            this.Pictures = new HashSet<Picture>();
+            this.AdImages = new HashSet<Picture>();
+            this.Thumbnails = new HashSet<Picture>();
         }
 
         // Navigation properties
 
-        public virtual ICollection<Picture> Pictures { get; set; }
+        public virtual ICollection<Picture> AdImages { get; set; }
+
+        public virtual ICollection<Picture> Thumbnails { get; set; }
     }
 }

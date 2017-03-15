@@ -17,120 +17,120 @@
     [RoutePrefix("api/accommodations")]
     public class AccommodationsController : BaseController
     {
-        // GET api/accommodations/id
-        public HttpResponseMessage Get(int id)
-        {
-            AccommodationAd result = context.AccommodationAds.Find(id);
+        //// GET api/accommodations/id
+        //public HttpResponseMessage Get(int id)
+        //{
+        //    AccommodationAd result = context.AccommodationAds.Find(id);
 
-            AccViewModel resultWithImages = new AccViewModel()
-            {
-                Id = result.Id,
-                Author = result.Author,
-                Title = result.Title,
-                Content = result.Content,
-                PublishedDate = result.PublishedDate,
-                Blobs = ExtractBlobNamesFromPictures(result.Pictures)
-            };
+        //    AccViewModel resultWithImages = new AccViewModel()
+        //    {
+        //        Id = result.Id,
+        //        Author = result.Author,
+        //        Title = result.Title,
+        //        Content = result.Content,
+        //        PublishedDate = result.PublishedDate,
+        //        Blobs = ExtractBlobNamesFromPictures(result.Pictures),
+        //    };
 
-            if(resultWithImages == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
+        //    if(resultWithImages == null)
+        //    {
+        //        return Request.CreateResponse(HttpStatusCode.BadRequest);
+        //    }
 
-            return Request.CreateResponse(HttpStatusCode.OK, resultWithImages);
-        }
+        //    return Request.CreateResponse(HttpStatusCode.OK, resultWithImages);
+        //}
 
-        // GET api/accommodations/all
-        [Route("All")]
-        public HttpResponseMessage GetAll()
-        {
-            var accAds = context.AccommodationAds
-                .OrderByDescending(x => x.PublishedDate)
-                .Select(a => a)
-                .ToList<AccommodationAd>();
+        //// GET api/accommodations/all
+        //[Route("All")]
+        //public HttpResponseMessage GetAll()
+        //{
+        //    var accAds = context.AccommodationAds
+        //        .OrderByDescending(x => x.PublishedDate)
+        //        .Select(a => a)
+        //        .ToList<AccommodationAd>();
 
-            ICollection<AccViewModel> resultAsAccViewModel = new List<AccViewModel>();
-            foreach (AccommodationAd accAd in accAds)
-            {
-                resultAsAccViewModel.Add(new AccViewModel()
-                {
-                    Id = accAd.Id,
-                    Author = accAd.Author,
-                    Title = accAd.Title,
-                    Content = accAd.Content,
-                    PublishedDate = accAd.PublishedDate,
-                    Blobs = ExtractBlobNamesFromPictures(accAd.Pictures)
-                });
-            }
+        //    ICollection<AccViewModel> resultAsAccViewModel = new List<AccViewModel>();
+        //    foreach (AccommodationAd accAd in accAds)
+        //    {
+        //        resultAsAccViewModel.Add(new AccViewModel()
+        //        {
+        //            Id = accAd.Id,
+        //            Author = accAd.Author,
+        //            Title = accAd.Title,
+        //            Content = accAd.Content,
+        //            PublishedDate = accAd.PublishedDate,
+        //            Blobs = ExtractBlobNamesFromPictures(accAd.Pictures)
+        //        });
+        //    }
 
-            if (accAds == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
+        //    if (accAds == null)
+        //    {
+        //        return Request.CreateResponse(HttpStatusCode.BadRequest);
+        //    }
 
-            return Request.CreateResponse(HttpStatusCode.OK, new { accommodations = resultAsAccViewModel });
-        }
+        //    return Request.CreateResponse(HttpStatusCode.OK, new { accommodations = resultAsAccViewModel });
+        //}
 
-        private ICollection<PictureViewModel> ExtractBlobNamesFromPictures(ICollection<Picture> pictures)
-        {
-            if(pictures == null)
-            {
-                return null;
-            }
+        //private ICollection<PictureViewModel> ExtractBlobNamesFromPictures(ICollection<Picture> pictures)
+        //{
+        //    if(pictures == null)
+        //    {
+        //        return null;
+        //    }
 
-            ICollection<PictureViewModel> blobNames = new List<PictureViewModel>();
+        //    ICollection<PictureViewModel> blobNames = new List<PictureViewModel>();
 
-            foreach (Picture picture in pictures)
-            {
-                blobNames.Add(new PictureViewModel(){
-                    Id = picture.Id,
-                    BlobName = picture.Name,
-                    AccommodationId = picture.AccommodationAdId
-                });
-            }
+        //    foreach (Picture picture in pictures)
+        //    {
+        //        blobNames.Add(new PictureViewModel(){
+        //            Id = picture.Id,
+        //            BlobName = picture.Name,
+        //            AccommodationId = picture.AccommodationAdId
+        //        });
+        //    }
 
-            return blobNames;
-        }
+        //    return blobNames;
+        //}
 
-        // POST api/accommodations/save
-        [Route("Save")]
-        public IHttpActionResult Post(AccViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// POST api/accommodations/save
+        //[Route("Save")]
+        //public IHttpActionResult Post(AccViewModel model)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
             
-            var accomodationAd = new AccommodationAd()
-            {
-                Title = model.Title,
-                Author = model.Author,
-                Content = model.Content,
-                PublishedDate = DateTime.Now,
-            };
-            if (model.BlobNames != null)
-            {
-                ICollection<Picture> pictures = new List<Picture>();
-                foreach (string blobName in model.BlobNames)
-                {
-                    pictures.Add(new Picture() { Name = blobName });
-                }
-                accomodationAd.Pictures = pictures;
-            }
-            if (model.ThumbnailBlobNames != null)
-            {
-                ICollection<Picture> pictures = new List<Picture>();
-                foreach (string thumbnailBlobName in model.ThumbnailBlobNames)
-                {
-                    pictures.Add(new Picture() { Name = thumbnailBlobName });
-                }
-                accomodationAd.Pictures = pictures;
-            }
+        //    var accomodationAd = new AccommodationAd()
+        //    {
+        //        Title = model.Title,
+        //        Author = model.Author,
+        //        Content = model.Content,
+        //        PublishedDate = DateTime.Now,
+        //    };
+        //    if (model.BlobNames != null)
+        //    {
+        //        ICollection<Picture> pictures = new List<Picture>();
+        //        foreach (string blobName in model.BlobNames)
+        //        {
+        //            pictures.Add(new Picture() { Name = blobName });
+        //        }
+        //        accomodationAd.Pictures = pictures;
+        //    }
+        //    if (model.ThumbnailBlobNames != null)
+        //    {
+        //        ICollection<Picture> pictures = new List<Picture>();
+        //        foreach (string thumbnailBlobName in model.ThumbnailBlobNames)
+        //        {
+        //            pictures.Add(new Picture() { Name = thumbnailBlobName });
+        //        }
+        //        accomodationAd.Pictures = pictures;
+        //    }
 
-            context.AccommodationAds.Add(accomodationAd);
-            context.SaveChanges();            
+        //    context.AccommodationAds.Add(accomodationAd);
+        //    context.SaveChanges();            
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
     }
 }

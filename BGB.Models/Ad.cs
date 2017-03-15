@@ -13,5 +13,7 @@
         public string Content { get; set; }
 
         public DateTime PublishedDate { get; set; }
+
+        public AdType Type { get; set; }
     }
 }
