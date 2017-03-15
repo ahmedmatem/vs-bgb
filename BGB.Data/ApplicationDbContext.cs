@@ -19,7 +19,9 @@
             return new ApplicationDbContext();
         }
 
-        public IDbSet<Picture> Pictures { get; set; }
+        public IDbSet<Picture> Thumbnails { get; set; }
+
+        public IDbSet<Picture> AdImages { get; set; }
 
         public IDbSet<AccommodationAd> AccommodationAds { get; set; }
     }
