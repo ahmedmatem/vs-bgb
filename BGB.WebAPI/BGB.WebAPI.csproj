@@ -280,7 +280,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\AccommodationsController.cs" />
+    <Compile Include="Controllers\AccommodationController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -288,15 +288,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\AccountBindingModels.cs" />
-    <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="ViewModels\Account\AccountBindingModels.cs" />
+    <Compile Include="ViewModels\Account\AccountViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\AccViewModel.cs" />
-    <Compile Include="ViewModels\AdViewModel.cs" />
-    <Compile Include="ViewModels\PictureViewModel.cs" />
+    <Compile Include="ViewModels\Accommodation\AccommodationBindingModels.cs" />
+    <Compile Include="ViewModels\AdBindingModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -377,6 +376,10 @@
     <ProjectReference Include="..\BGB.Data\BGB.Data.csproj">
       <Project>{d6de3113-4b5c-4f53-9ab8-dfbb234cf51e}</Project>
       <Name>BGB.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BGB.Infrastructure\BGB.Infrastructure.csproj">
+      <Project>{2f258e41-f0ef-4185-842a-8dc85e21c2a1}</Project>
+      <Name>BGB.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\BGB.Models\BGB.Models.csproj">
       <Project>{9c794498-5840-46c3-8b0a-29dba0b6e70c}</Project>

@@ -8,6 +8,8 @@
     {
         public AccommodationAd()
         {
+            this.Type = AdType.ACCOMMODATION;
+
             this.AdImages = new HashSet<AdImage>();
             this.Thumbnails = new HashSet<Thumbnail>();
         }
