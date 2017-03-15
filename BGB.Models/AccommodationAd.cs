@@ -8,14 +8,14 @@
     {
         public AccommodationAd()
         {
-            this.AdImages = new HashSet<Picture>();
-            this.Thumbnails = new HashSet<Picture>();
+            this.AdImages = new HashSet<AdImage>();
+            this.Thumbnails = new HashSet<Thumbnail>();
         }
 
         // Navigation properties
 
-        public virtual ICollection<Picture> AdImages { get; set; }
+        public virtual ICollection<AdImage> AdImages { get; set; }
 
-        public virtual ICollection<Picture> Thumbnails { get; set; }
+        public virtual ICollection<Thumbnail> Thumbnails { get; set; }
     }
 }
