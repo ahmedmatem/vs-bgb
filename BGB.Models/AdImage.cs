@@ -1,6 +1,6 @@
 ﻿namespace BGB.Models
 {
-    public class AdImage : Ad
+    public class AdImage : Picture
     {
         public int AccommodationId { get; set; }
 
